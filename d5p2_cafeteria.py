@@ -14,15 +14,15 @@ for line in lines:
 parsed_fresh_ranges = []
 for t in fresh_ranges:
     start, end = t.split("-")
-    parsed_fresh_ranges.append(int(start), int(end))
+    parsed_fresh_ranges.append((int(start), int(end)))
     
 # Merge overlapping ranges
 merged = []
 for start, end in parsed_fresh_ranges:
     if merged and start <= merged[-1][1]+1:
-        merged[-1]=(merge[-1][0], max(merge[-1][1], end)
+        merged[-1]=(merged[-1][0], max(merged[-1][1], end))
     else:
-        merged.append((start, end)
+        merged.append((start, end))
 
 # Count number of ingredients considered fresh
 nb_fresh_ingredients = sum(end - start + 1 for start, end in merged)
