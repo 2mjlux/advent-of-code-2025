@@ -17,6 +17,7 @@ for t in fresh_ranges:
     parsed_fresh_ranges.append((int(start), int(end)))
     
 # Merge overlapping ranges
+parsed_fresh_ranges.sort()  # Necessary for the merge to function
 merged = []
 for start, end in parsed_fresh_ranges:
     if merged and start <= merged[-1][1]+1:
