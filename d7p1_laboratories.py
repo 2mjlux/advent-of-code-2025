@@ -26,7 +26,7 @@ for row in range(1, len(grid)):
                 new_beams.append(col - 1)
             if col + 1 < len(grid[0]):  # Make sure traversal remains within the grid
                 new_beams.append(col + 1)
-    current_beams = list(set(new_beams))  # Remove duplicates if beams merge
+    current_beams = list(set(new_beams))  # Update beams tracking and remove duplicates if beams merge
 
 
 print(f"The number of times the beam is split is {split_counter}.")
