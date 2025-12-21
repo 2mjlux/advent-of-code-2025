@@ -8,7 +8,7 @@ with open("puzzle_input_day11", "r") as f:
         device, outputs = line.split(":")
         graph[device] = outputs.split()
         
-# Count paths using recursion and memoization
+# Define count_paths function using recursion and memoization
 # Recursion through the graph values, which turn into graph keys
 
 def count_paths(graph, start, end, memos = None):
@@ -31,6 +31,12 @@ def count_paths(graph, start, end, memos = None):
     memos[start] = total    # Store total after counting all paths from device
     return total
     
-result = count_paths(graph, "you", "out")
+# Find out whether "dac" precedes "fft" or the other way round
+# The assignment description makes clear that both ways is not possible
 
-print(f"The number of possible paths is {result}.")
+if count_paths(graph, "dac", "fft") > 0:
+    result = count_paths(graph, "svr", "dac") * count_paths(graph, "dac", "fft") * count_paths(graph, "fft", "out")
+else:
+    result = count_paths(graph, "svr", "fft") * count_paths(graph, "fft", "dac") * count_paths(graph, "dac", "out")
+
+print(f"The number of possible paths from svr to out that visit both dac and fft is {result}.")
